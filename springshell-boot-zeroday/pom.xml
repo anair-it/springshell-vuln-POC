@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.18.RELEASE</version>
+	</parent>
+	<groupId>org.anair</groupId>
+	<artifactId>springshell-boot-zeroday</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springshell-zeroday</name>
+	<description>Prove CVE-2022-22965 in a spring-boot war and jar runtime</description>
+	<packaging>${packaging.type}</packaging>
+	<properties>
+		<java.version>11</java.version>
+	</properties>
+
+	<dependencies>
+
+		<!-- https://tanzu.vmware.com/security/cve-2022-22965 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>springshell</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>jar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+		</profile>
+		<profile>
+			<id>war</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>war</packaging.type>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

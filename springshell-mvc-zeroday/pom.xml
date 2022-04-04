@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.anair</groupId>
+	<artifactId>springshell-mvc-zeroday</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>springshell-zeroday</name>
+	<description>Prove CVE-2022-22965 in a spring mvc tomcat app</description>
+	<packaging>war</packaging>
+
+	<properties>
+		<java.version>11</java.version>
+		<springframework.version>5.1.19.RELEASE</springframework.version>
+		<jackson.version>2.9.10</jackson.version>
+
+<!--		<java.version>1.8</java.version>-->
+<!--		<springframework.version>3.2.9.RELEASE</springframework.version>-->
+<!--		<jackson.version>2.5.3</jackson.version>-->
+	</properties>
+
+	<dependencies>
+
+		<!-- https://tanzu.vmware.com/security/cve-2022-22965 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>springshell</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>springshell</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
