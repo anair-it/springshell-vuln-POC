@@ -9,7 +9,7 @@
 ## Replicate vulnerability
 1. Run command to:
    - Package a war file
-   - Build a tomcat 8 corretto 11 image
+   - Build a tomcat 8 JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
    - Run a container from the image        
  `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
@@ -40,7 +40,7 @@ __This mean the application is compromised__
 
 5. Switch java and spring versions
     - Switch the properties in pom.xml to use Java 8 and spring 3.2.9
-    - Switch Dockerfile base image to __tomcat:8-jdk8-corretto__
+    - Switch Dockerfile base image to __tomcat:8-jdk8-corretto__  (This POC uses Amazon Corretto, but pick your applicable image)
     - Repeat above steps and you will see that the service is not compromised
     
 

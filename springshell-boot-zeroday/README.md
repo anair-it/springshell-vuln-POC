@@ -8,7 +8,7 @@ Below are 2 paths to create a service. One is a spring-boot WAR running on Tomca
 ### spring-boot WAR on tomcat
 1. Run command to:
    - Package a war file
-   - Build a tomcat 8 Corretto 11 image
+   - Build a tomcat 8 JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
    - Run a container from the image        
  `mvn clean package -P war && docker build . -f Dockerfile-war -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
@@ -32,7 +32,7 @@ curl --request POST \
 ### spring-boot jar
 1. Run command to:
     - Package a jar file
-    - Build a Corretto 11 image
+    - Build a JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
     - Create a container from the image        
       `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
