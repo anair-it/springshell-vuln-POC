@@ -7,6 +7,13 @@ SCA scanners may report a critical security violation due to the spring-beans ve
 - https://blog.sonatype.com/new-0-day-spring-framework-vulnerability-confirmed
 - https://www.rapid7.com/blog/post/2022/03/30/spring4shell-zero-day-vulnerability-in-spring-framework/
 
+
+## Pre-requisite
+1. Docker running locally
+2. JDK 8,11
+3. Maven 3.x
+2. Git clone this project
+
 ## Spring boot
 - In a spring boot JAR and WAR application: Navigate to [springshell-boot-zeroday project](springshell-boot-zeroday)
 

