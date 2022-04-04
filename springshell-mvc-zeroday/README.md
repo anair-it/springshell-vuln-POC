@@ -12,7 +12,7 @@
    - Build a tomcat 8 JDK 11 image (This POC uses Amazon Corretto, but pick your applicable image)
    - Run a container from the image        
  `mvn clean package && docker build . -t springshell && docker run --name springshell --rm -p 8080:8080 springshell`
-2. Run curl command attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp name is springshell.jsp
+2. Run below POST request that attempts to create a jsp file in the tomcat webapps/ROOT folder. The jsp file is springshell.jsp
    1. If the jsp is not created, _the application is not compromised_
 ```
 curl --request POST \
