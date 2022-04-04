@@ -12,7 +12,8 @@ SCA scanners may report a critical security violation due to the spring-beans ve
 1. Docker running locally
 2. JDK 8,11
 3. Maven 3.x
-2. Git clone this project
+4. Git clone this project
+5. Update spring and spring-boot versions accordingly in pom.xml
 
 ## Spring boot
 - In a spring boot JAR and WAR application: Navigate to [springshell-boot-zeroday project](springshell-boot-zeroday)
