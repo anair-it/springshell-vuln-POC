@@ -41,7 +41,7 @@ _This means the application is compromised_
 5. Switch java and spring versions
     - Switch the properties in pom.xml to use Java 8 and spring 3.2.9
     - Switch Dockerfile base image to __tomcat:8-jdk8-corretto__  (This POC uses Amazon Corretto, but pick your applicable image)
-    - Repeat above steps and you will see that the service is not compromised
+    - Repeat above steps, and you will see that the service is not compromised
     
 
 ## Reference

