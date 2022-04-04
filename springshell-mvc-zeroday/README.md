@@ -35,7 +35,7 @@ __This mean the application is compromised__
 
 4. Exploitation: Hit this url in the browser and update the shell cmd (_cmd_ query param) to print the result of the command
 `http://localhost:8080/springshell.jsp?cmd=pwd`
-  - If there is no response or a 404, there is no vulnerability
+  - If there is no response or a 404,  __the application is not compromised_
   - If the output is the response of a shell command execution, __the application is compromised__. Refer remediation steps in the references below
 
 5. Switch java and spring versions
