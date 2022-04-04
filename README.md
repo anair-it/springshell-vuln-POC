@@ -1,5 +1,7 @@
 # Replicate spring shell 0-day vulnerability
 
+SCA scanners may report a critical security violation due to the spring-beans version used. But that doesn't mean the application is vulnerable. These POC projects should help you understand the issue and verify if your application is really affected and apply a fix, if there is an issue.
+
 ## Reference
 - https://tanzu.vmware.com/security/cve-2022-22965
 - https://blog.sonatype.com/new-0-day-spring-framework-vulnerability-confirmed
