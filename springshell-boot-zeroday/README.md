@@ -59,8 +59,6 @@ curl --request POST \
   - If there is no response or a 404, _the application is not compromised_
   - If the output is the response of a shell command execution, _the application is compromised_. Refer remediation steps in the references below
 
-## More 
-
 ## Reference
 - https://tanzu.vmware.com/security/cve-2022-22965
 - https://blog.sonatype.com/new-0-day-spring-framework-vulnerability-confirmed
